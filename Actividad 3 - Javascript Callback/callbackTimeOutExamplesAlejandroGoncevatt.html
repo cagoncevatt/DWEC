@@ -1,0 +1,147 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function first()
+			{
+				console.log("Starting First...");
+				console.log("Calling Second from First.");
+				second();
+				console.log("Finished Second from First.");
+				console.log("Calling Third from First.");
+				third();
+				console.log("Finished Third from First.");
+				console.log("Finished First.");
+			}
+			
+			function asynchronousFirst()
+			{
+				console.log("Starting First...");
+				console.log("Calling Second from First.");
+				asynchronousSecond();
+				console.log("Finished Second from First.");
+				console.log("Finished First.");
+			}
+			
+			function asynchronousSecond()
+			{
+				console.log("Starting Second...");
+				console.log("Preparing Forth execution...");
+				setTimeout(forth, 5000);
+				console.log("Finished Second.");
+			}
+			
+			function callbackFirst(toExecute)
+			{
+				console.log("Starting First...");
+				console.log("Calling Second or Third from First.");
+				toExecute();
+				if (toExecute == 'second')
+					console.log("Finished Second from First.");
+				else
+					console.log("Finished Third from First.");
+				console.log("Finished First.");
+			}
+			
+			function second()
+			{
+				console.log("Starting Second...");
+				console.log("Entering loop of Second...");
+				for (var i = 0; i < 500; i++)
+				{
+					if (i % 50 == 0)
+						console.log("Second loop var i = " + i);
+				}
+				console.log("The loop of Seconde is over.");
+				console.log("Finished Second.");
+			}
+			
+			function third()
+			{
+				console.log("Starting Third...");
+				console.log("Entering loop of Third...");
+				for (var i = 0; i < 10000; i++)
+				{
+					if (i % 500 == 0)
+						console.log("Third loop var i = " + i);
+				}
+				console.log("The loop of Third is over.");
+				console.log("Finished Third.");
+			}
+			
+			function forth()
+			{
+				console.log("Starting Forth...");
+				alert("The Forth is here!!!");
+				console.log("Finished Forth.");
+			}
+			
+			function classic()
+			{
+				first();
+			}
+			
+			function withCallback()
+			{
+				var executeNum = Math.floor((Math.random()*3)+2);
+				if (executeNum == 2)
+					callbackFirst(second);
+				else
+					callbackFirst(third);
+			}
+			
+			function asynchronous()
+			{
+				asynchronousFirst();
+			}
+		</script>
+		<style type="text/css">
+			#buttons button {
+				display: block;
+				float: left;
+			}
+			
+			div {
+				float: left;
+				padding 5px;
+				border: 2.5px solid #4e4e4e;
+				border-radius: 8px;
+			}
+			
+			#buttons {
+				padding: 1%;
+				margin: 3% 0 2% 37%;
+			}
+			
+			#conclusions {
+				margin: 3% 0 5% 10%;
+				width: 80%;
+				height: auto;
+			}
+			
+			#conclusions h1 {
+				margin-left: 30%;
+				margin-bottom: 5%;
+				text-decoration: underline;
+			}
+			
+			#conclusions p {
+				margin-left: 3%;
+				margin-right: 3%;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="buttons">
+			<button id="classic" onclick="classic()">Classic</button>
+			<button id="callback" onclick="withCallback()">With Callback</button>
+			<button id="async" onclick="asynchronous()">Asynchronous</button>
+		</div>
+		<div id="conclusions">
+			<h1>Conslusiones y Reflexiones</h1>
+			<p>El uso de las funciones en Javascript, a primera vista, no parece cambiar tanto de la forma de uso de otros lenguajes de programación. El primer gran cambio es el poder pasar funciones como tal como parámetros a otras funciones de manera que puedan ser usadas para poder definir un orden de ejecución variante y dinámico, aunque aún atados en cierta manera a la ejecución secuencial.</p>
+			<p>Por otro lado Javascript nos da funciones para poder simular la asincronía, esto es a través de una función a la que puedes enviar una función (declarada allí mismo o ya declarada en otro punto del código) y definir si quieres que se ejecute de manera constante cada X tiempo, o si quieres que esa misma función se ejecute luego de X tiempo de que se "prepara".</p>
+			<p>En definitiva si se ven las posibilidades y se aprovechan bien estos recursos que nos ofrece Javascript se pueden lograr algunas secuencias de funciones muy útiles y que pueden dotar nuestra web de un aspecto o características únicas respecto a la muestra o gestión de la información.</p>
+		</div>
+	</body>
+</html>
