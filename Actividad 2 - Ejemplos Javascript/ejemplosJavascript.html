@@ -1,0 +1,691 @@
+<html>
+	<head>
+		<title>Ejemplos Javascript</title>
+		<style type="text/css">
+			pre
+			{
+				color: green;
+				background-color: black;
+				font-family: monospace;
+				font-size: 0.9em;
+				overflow-x: auto;
+			}
+			
+			.conceptCol 
+			{
+				text-align: center;
+				width: 20%;
+			}
+			
+			.fontCol
+			{
+				width: 844px;
+			}
+		</style>
+		<script>
+			// If you push the button all the content of the cell will be replaced
+			function pressAndPrint() 
+			{
+				document.getElementById("functionCell").innerHTML = "It appears that you pressed the button...";
+			}
+			
+			// Returns a string with the parameters sent
+			function parametersTest(number, string) 
+			{
+				return "The first parameter (number) is: " + number + "<br>The second (string) is: " + string;
+			}
+			
+			// Returns true if parameter equals 1
+			function returnTest(varSent) 
+			{
+				if (varSent == 1)
+					return true;
+				else
+					return false;
+			}
+		</script>
+	</head>
+	
+	<body>
+		<table border="1" style="width: 100%;">
+			<tr>
+				<th>Concepto</th>
+				<th>C&oacute;digo Fuente</th>
+				<th>Resultado</th>
+			</tr>
+			<!-- Javascript Variables -->
+			<tr>
+				<td class="conceptCol">Variables</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+			&lt;script&gt;
+			// We define variables and initialize some of them
+				var a = 0;
+				var b;
+				var c = 4;
+				var d;
+				var e = "That's it...";
+
+				// Write in the document the values of some variables
+				document.write("A: " + a + "&lt;br&gt;");
+				
+				// Initializing variable that was defined and hasn't been initialized
+				b = (a + 2) * c;
+				document.write("C: " + c + "&lt;br&gt;");
+				document.write("B: (A + 2) * C = " + b + "&lt;br&gt;");
+				d = a + b + c;
+				document.write("D: A + B + C = " + c + "&lt;br&gt;");
+				document.write(e);
+			&lt;/script&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+					// We define variables and initialize some of them
+					var a = 0;
+					var b;
+					var c = 4;
+					var d;
+					var e = "That's it...";
+
+					// Write in the document the values of some variables
+					document.write("A: " + a + "<br>");
+					
+					// Initializing variable that was defined and hasn't been initialized
+					b = (a + 2) * c;
+					document.write("C: " + c + "<br>");
+					document.write("B: (A + 2) * C = " + b + "<br>");
+					d = a + b + c;
+					document.write("D: A + B + C = " + c + "<br>");
+					document.write(e);
+				</script>
+				</td>
+			</tr>
+			<!-- Javascript Data Types -->
+			<tr>
+				<td class="conceptCol">Data Types</td>
+				<td class="fontCol">
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+			&lt;script&gt;
+				/* Variables can be of different types
+					- Numbers without decimals
+					- Numbers with decimals
+					- Strings
+					- Characters
+					- Arrays
+					- Booleans
+					- Etc.
+				*/
+				var something = 0;
+				var decimal = 2.134;
+				var check = true;
+				var notCheck = false;
+				
+				document.write("Variable something is " + something + "&lt;br&gt;");
+				
+				// If check is true we change variable something value
+				if (check)
+				{
+					something = 'It was called "World"';
+				}
+				document.write("Now var something is: " + something 
+				+ "&lt;br&gt;&lt;br&gt;" + "A decimal number: " + decimal + "&lt;br&gt;");
+				
+				// If notCheck is false we change variable decimal value
+				if (!notCheck)
+				{
+					decimal = 3;
+				}
+				document.write("Not a decimal anymore... " + decimal);
+			&lt;/script&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						/* Variables can be of different types
+							- Numbers without decimals
+							- Numbers with decimals
+							- Strings
+							- Characters
+							- Arrays
+							- Booleans
+							- Etc.
+						*/
+						var something = 0;
+						var decimal = 2.134;
+						var check = true;
+						var notCheck = false;
+						
+						document.write("Variable something is " + something + "<br>");
+						
+						// If check is true we change variable something value
+						if (check)
+						{
+							something = 'It was called "World"';
+						}
+						document.write("Now var something is: " + something + "<br><br>" + "A decimal number: " + decimal + "<br>");
+						
+						// If notCheck is false we change variable decimal value
+						if (!notCheck)
+						{
+							decimal = 3;
+						}
+						document.write("Not a decimal anymore... " + decimal);
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Objects -->
+			<tr>
+				<td class="conceptCol">Objects</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+			&lt;script&gt;
+				// Create a variable initializing it as an object
+				var world = new Object();
+				
+				// Define values for object properties
+				world.population = 1000000000;
+				world.continents = 5;
+				world.goodNumber = 8.8;
+				world.word = "This is our world. It is god damn big...";
+				world.getPopulation = function() {return world.population};
+				
+				// Write in the document values of properties and some methods results
+				document.write("Our world:&lt;br&gt;&lt;br&gt;Population: " + world.getPopulation() + 
+				"&lt;br&gt;Continents: " + world.continents + "&lt;br&gt;A symmetric number: " + 
+				world.goodNumber + "&lt;br&gt;" + world.word + "&lt;br&gt;This phrase has " + world.word.length +
+				" characters&lt;br&gt;The index where worlds starts is " + world.word.indexOf("world") + 
+				"&lt;br&gt;&lt;br&gt;" + world.word.toUpperCase());
+			&lt;/script&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						// Create a variable initializing it as an object
+						var world = new Object();
+						
+						// Define values for object properties
+						world.population = 1000000000;
+						world.continents = 5;
+						world.goodNumber = 8.8;
+						world.word = "This is our world. It is god damn big...";
+						world.getPopulation = function() {return world.population};
+						
+						// Write in the document values of properties and some methods results
+						document.write("Our world:<br><br>Population: " + world.getPopulation() + 
+						"<br>Continents: " + world.continents + "<br>A symmetric number: " + 
+						world.goodNumber + "<br>" + world.word + "<br>This phrase has " + world.word.length +
+						" characters<br>The index where worlds starts is " + world.word.indexOf("world") 
+						+ "<br><br>" + world.word.toUpperCase());
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Functions -->
+			<tr>
+				<td class="conceptCol">Functions</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;
+			&lt;script&gt;
+				// If you push the button all the content of the cell will be replaced
+				function pressAndPrint() 
+				{
+					document.getElementById("functionCell").innerHTML = 
+					"It appears that you pressed the button...";
+				}
+				
+				// Returns a string with the parameters sent
+				function parametersTest(number, string)
+				{
+					return "The first parameter (number) is: " + number + 
+					"\nThe second (string) is: " + string;
+				}
+				
+				// Returns true if parameter equals 1
+				function returnTest(varSent)
+				{
+					if (varSent == 1)
+						return true;
+					else
+						return false;
+				}
+			&lt;/script&gt;
+		&lt;/head&gt;
+		&lt;body&gt;
+			&lt;!-- A red button that shouldn't be pressed --&gt;
+			&lt;button style="background-color: red;" onclick="pressAndPrint()"&gt;Don't Push this button&lt;/button&gt;
+			&lt;script&gt;
+				// Write the string returned by the function to which we send parameters
+				document.write("&lt;br&gt;Parameters test: " + parametersTest(3, 'Mhe...') + "&lt;br&gt;");
+				
+				// If returnTest returns false we write the document
+				if (!returnTest(0))
+				{
+					document.write("&lt;br&gt;They didn't send a 1&lt;br&gt;");
+				}
+			&lt;/script&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td id="functionCell">
+					<!-- A red button that shouldn't be pressed -->
+					<button style="background-color: red;" onclick="pressAndPrint()">Don't Push this button</button>
+					<script>
+						// Write the string returned by the function to which we send parameters
+						document.write("<br>Parameters test: " + parametersTest(3, 'Mhe...') + "<br>");
+						
+						// If returnTest returns false we write the document
+						if (!returnTest(0))
+						{
+							document.write("<br>They didn't send a 1<br>");
+						}
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Operators -->
+			<tr>
+				<td class="conceptCol">Operators</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+			&lt;script&gt;
+				// Definition of some variables in the same line
+				var a, b, c, d, e, f;
+				
+				// Initializing each one and writing them in the document
+				a = f = 2;
+				b = a - 4;
+				c = b - a * 5;
+				d = c / 5;
+				e = "A wonderful day " + " ends here.";
+				f = 4 % 2;
+				
+				document.write(a + "&lt;br&gt;" + b + "&lt;br&gt;" + c + "&lt;br&gt;" + d + 
+				"&lt;br&gt;" + e + "&lt;br&gt;" + f + "&lt;br&gt;");
+				
+				// Modifying variables values with operators and re-writing them
+				a += 7;
+				b /= 2;
+				c *= 2;
+				d %= 2;
+				e += " Nice!";
+				
+				document.write("&lt;br&gt;" + a + "&lt;br&gt;" + b + "&lt;br&gt;" + c + "&lt;br&gt;" + d + 
+				"&lt;br&gt;" + e);
+			&lt;/script&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						// Definition of some variables in the same line
+						var a, b, c, d, e, f;
+						
+						// Initializing each one and writing them in the document
+						a = f = 2;
+						b = a - 4;
+						c = b - a * 5;
+						d = c / 5;
+						e = "A wonderful day " + " ends here.";
+						f = 4 % 2;
+						document.write(a + "<br>" + b + "<br>" + c + "<br>" + d + 
+						"<br>" + e + "<br>" + f + "<br>");
+						
+						// Modifying variables values with operators and re-writing them
+						a += 7;
+						b /= 2;
+						c *= 2;
+						d %= 2;
+						e += " Nice!";
+						
+						document.write("<br>" + a + "<br>" + b + "<br>" + c + "<br>" + d + 
+						"<br>" + e);
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Comparisons -->
+			<tr>
+				<td class="conceptCol">Comparisons</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						/*
+						We can use comparison operators to determine if variables or values are equal or different from others:
+						== (equal to)
+						=== (exactly equal to)
+						!= (not equal)
+						!== (not equal value or type)
+						> (greater than)
+						< (less than)
+						>= (greaten than or equal to)
+						<= (less than or equal to)
+						
+						These allows to make easy and logical comparisons.
+						*/
+						var a, b, c;
+						
+						a = c = 4;
+						b = 2.4;
+						
+						// Two simple comparations with equal or different
+						if (a == c)
+							document.write("A and C are equal.<br>");
+						if (a != b)
+							document.write("A is different from B<br><br>");
+						
+						if (a === "4") // a is not exactly equal because of the type
+							document.write("A is exactly equal to string '4'<br>");
+						else
+							if (a !== "4")
+								document.write("A is " + a + " but is different from string '4'<br>");
+						
+						// Comparing with less than and greater than or equal to
+						if (a < b && a == c) // Because of the logical and (&&) this will be false
+							document.write("A is less than B<br>");
+						else
+							if ( b < a || a >= c) // Because of the logical or (||) this will be true
+								document.write("A is equal or greater than C<br>");
+						
+						// For logical operators examples we'll turn var c in a boolean
+						c = true;
+						
+						if (!c) // This is a not (!), C has to bee false to enter de if
+							document.write("C is false<br><br>");
+						else
+							a = (c) ? "C is true" : "C is false"; // This conditional is verified and returns the result depending in if it is true (? x) or false (: y)
+						
+						document.write(a);
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Conditions -->
+			<tr>
+				<td class="conceptCol">Conditions</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+					/*
+					If is used to execute code if the condition specified is true.
+					In case you want to execute code if something is true or other fragment if is not ttrue you must use If Else
+					The third kind of condition is composed of consecutives If Else If Else, with this you can execute a part of code depending on the condition that returns true.
+					*/
+					
+					var a, b, c, d, e;
+					
+					a = "This is a string";
+					b = e = 5;
+					d = 5.5
+					c = false;
+					
+					// This if is true because both conditions are true
+					if (!c && d > b)
+						document.write("C is a lie and D is bigger than B<br><br>");
+					
+					// None of the conditions is true, so this jumps to the else code
+					if (c || d === "5")
+						document.write("WTF?!<br>");
+					else
+						document.write("This If Else worked well...<br><br>");
+					
+					// The first two conditions returns false, in the end the last fragment of code is executed.
+					if (b === e && d < 5.3)
+						document.write("Things happens in the world...<br>");
+					else if (c || d !== 5.5)
+						document.write("What else can be put in my way?...<br>");
+					else
+						document.write("This can be extended infinitely<br>");
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Switch -->
+			<tr>
+				<td class="conceptCol">Switch</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						/*
+						A switch statement can evaluate various conditions, if one of them is true then executes that part
+						Also you can define a fragment of code to use if none of the conditions is true.
+						*/
+						
+						var a, b;
+						
+						a = 3;
+						b = 0;
+						
+						// We evaluate the value of variable a and define the differente cases. The break; is used to stop the loop that compares and executes the code.
+						switch (a)
+						{
+							case 1:
+								document.write("A is 1<br><br>");
+								break
+							case 2:
+								document.write("A is 2<br><br>");
+								break;
+							case 3:
+								document.write("A is 3<br><br>");
+								break;
+						}
+						
+						// We use a switch for B this time, B doesn't have a value that is handled in the case.
+						// The default will point which fragment of code should be executed if none of the other conditions are true.
+						switch (b)
+						{
+							case 1:
+								document.write("B is 1<br>");
+								break
+							case 2:
+								document.write("B is 2<br>");
+								break;
+							case 3:
+								document.write("B is 3<br>");
+								break;
+							default:
+								document.write("The default value is 0, so B is 0.<br>");
+						}
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Loop For -->
+			<tr>
+				<td class="conceptCol">Loop For</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						/*
+						A for loop is composed by 3 statements:
+								statement 1		statement 2		statement 3
+							for ( var i = 0  ;   i   <  10   ;    i++  )
+						*/
+						
+						var a, b;
+						
+						// In the statement 1 you can initialize variables, but it is also optional -> for (; i < x; x--)
+						for (var i = 10, a = 0; a < i; a++, i--);
+						document.write("The value of A is " + a + " and i is " + i +"<br><br>");
+						
+						b = false;
+						a = 3;
+						
+						// The second statement is the condition of the loop. If it returns true the loop will start over again, if it returns false the loop ends.
+						// If you omit this the loop will be endless
+						for (; !b; a--)
+						{
+							if (a == 0)
+								b = true;
+							else
+								document.write("A is " + a + "<br>");
+						}
+						
+						// The third statemente is the action you want to do after the loop have done everything, an action to do after all the others
+						// Is also an optional paramether and can be omited.
+						for (var c = 0; c < 5; c++);
+						document.write("C++ ended in " + c + "<br><br>");
+						
+						// For/In is a loop that will be executed as many times as elements are in the indicated variable.
+						var elements = {fele:"Air", sele:"Fire", tele:"Earth", foele:"Water"};
+
+						for (e in elements)
+						{
+							document.write(elements[e] + "<br>");
+						}
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Loop While -->
+			<tr>
+				<td class="conceptCol">Loop While</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+						/*
+						The while is another loop method which will be executed while the condition returns true
+						*/
+						var a, b;
+						
+						a = true;
+						b = 10;
+						while (a)
+						{
+							if (b > 1)
+								document.write("B is " + b + ", it's still bigger than 1<br>");
+							else
+								a = false;
+							b--;
+						}
+						
+						// The Do While is a loop that will be executed at least one time before comproving the condition
+						a = 0
+						
+						do
+						{
+							document.write("<br>The exit condition is A equals 1<br>A is 0 and this is being printed<br>");
+						}
+						while (a == 1);
+						// The code inside the loop will be executed even if the condition to exit is already met.
+						// That is the only thing that difference the while from the do/while
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Breaks -->
+			<tr>
+				<td class="conceptCol">Breaks</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Errors -->
+			<tr>
+				<td class="conceptCol">Errors</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+					</script>
+				</td>
+			</tr>
+			<!-- Javascript Validation -->
+			<tr>
+				<td class="conceptCol">Validation</td>
+				<td>
+					<pre>
+	&lt;html&gt;
+		&lt;head&gt;&lt;/head&gt;
+		&lt;body&gt;
+		
+		&lt;/body&gt;
+	&lt;/html&gt;
+					</pre>
+				</td>
+				<td>
+					<script>
+					</script>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
