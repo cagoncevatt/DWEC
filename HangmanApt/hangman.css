@@ -1,0 +1,211 @@
+body {
+	margin: 0;
+	background-repeat: no-repeat;
+	background-position: -312px -156px;
+}
+
+#gameTitleCont {
+	width: 90%;
+	overflow: hidden;
+	text-align: center;
+	font-size: 400%;
+	float: left;
+	border-radius: 10px;
+	margin-left: 4%;
+	border: 3px solid gray;
+	background-image: -webkit-gradient(linear,left top, left bottom, color-stop(0, #332C33), color-stop(1, #E4E4E4));
+	background-image: -o-linear-gradient(bottom, #332C33 0%, #E4E4E4 100%);
+	background-image: -moz-linear-gradient(bottom, #332C33 0%, #E4E4E4 100%);
+	background-image: -webkit-linear-gradient(bottom, #332C33 0%, #E4E4E4 100%);
+	background-image: -ms-linear-gradient(bottom, #332C33 0%, #E4E4E4 100%);
+	background-image: linear-gradient(to bottom, #332C33 0%, #E4E4E4 100%);
+}
+
+#changeStyleButton {
+	margin-left: 45%;
+	font-size:125%;
+}
+
+#extraBGCont {
+	font-size: 150%;
+	background-repeat: no-repeat;
+}
+
+#gameMainCont {
+	border: 2px solid black;
+	background-color: white;
+	float:left;
+	display: block;
+	background-repeat: no-repeat;
+	height: 780px;
+	width: 95%;
+	margin-left:2%;
+	overflow:hidden;
+}
+
+#hangedImg {
+	background-color: white;
+	margin-left: 27.5%;
+	width: 300px;
+	height: 500px;
+	margin-top:2.5%;
+	float: left;
+}
+
+* {
+	font-family: 'Chiller', 'Bradley Hand ITC', Sans;
+}
+
+#hangedGameCont button {
+	font-size: 200%;
+}
+
+#lettersCont {
+	display: block;
+	float:left;
+	width: 28.5%;
+	margin-top: 2%;
+}
+
+.keyCont {
+	float: left;
+	margin-left: 2%;
+	margin-top: 2%;
+	font-size: 275%;
+	
+	border-radius: 7px;
+	padding: 0% 2%; 
+}
+
+.keyActive {
+	border: 2px solid #4e4e4e;
+}
+
+.keyDisabled {
+	border: 2px solid #e4e4e4;
+	color: #e4e4e4;
+}
+
+.keyDisabled:hover {
+	cursor:default;
+}
+
+.keyActive:hover {
+	cursor: pointer;
+}
+
+#hangedGameCont * {
+	display: block;
+}
+
+#selectedWord {
+	display: none;
+	letter-spacing: 3px;
+	font-size:200%;
+}
+
+#addWord {
+	float: left;
+}
+
+#gameMenu {
+	float: left;
+	width: 30%;
+}
+
+#newWordTextBox {
+	margin-left: 55%;
+	width: 50%;
+	height: 40px;
+	font-size: 200%;
+}
+
+#startGame {
+	margin-top: 6%;
+}
+
+#riskHintCont {
+	width: 40%;
+	float: left;
+}
+
+#riskText {
+	margin: 4% 0 1% 0;
+	cursor: pointer;
+	font-size: 250%;
+}
+
+#riskTextBox {
+	width: 60%;
+	height: 40px;
+	font-size: 200%;
+}
+
+#hintOption {
+	margin-top: 5%;
+	font-size: 250%;
+	display: block;
+}
+
+#hintCont {
+	margin-top: 1%;
+	font-size: 200%;
+}
+
+#hintOption:hover {
+	cursor: pointer;
+}
+
+#gameOver {
+	display:none;
+	top: 0;
+	left: 30%;
+	position:fixed;
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: #4e4e4e;
+}
+
+#backShade {
+	position:fixed;
+	width:150%;
+	height:150%;
+	display:none;
+	background-color: black;
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#gameOverText {
+	text-align:center;
+	color: white;
+	font-size: 350%;
+	margin: 1% 0;
+}
+
+#hangedGameCont .specialFixed {
+	overflow:hidden;
+	text-align:center;
+	font-size:250%;
+	display:none;
+	position: fixed;
+	width: 15%;
+	height: 8%;
+	top:40%;
+	border-radius: 7px;
+	border: 3px solid black;
+	background-image: -webkit-gradient(linear,left top, left bottom, color-stop(0, #4E4E4E), color-stop(1, #E4E4E4));
+	background-image: -o-linear-gradient(bottom, #4E4E4E 0%, #E4E4E4 100%);
+	background-image: -moz-linear-gradient(bottom, #4E4E4E 0%, #E4E4E4 100%);
+	background-image: -webkit-linear-gradient(bottom, #4E4E4E 0%, #E4E4E4 100%);
+	background-image: -ms-linear-gradient(bottom, #4E4E4E 0%, #E4E4E4 100%);
+	background-image: linear-gradient(to bottom, #4E4E4E 0%, #E4E4E4 100%);
+}
+
+#pointsCont {
+	left:-1%;
+}
+
+#timeCont {
+	left:85%;
+}

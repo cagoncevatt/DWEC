@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>The Hangman</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="hangmanScript.js"></script>
+		<link rel="stylesheet" type="text/css" href="hangman.css">
+	</head>
+	
+	<body>
+		<div id="backShade"></div>
+		<div id="gameTitleCont">
+			<div id="extraBGCont">The Hangman</div>
+		</div>
+		<input type="button" id="changeStyleButton" onclick="changeStyle()" value="Change the Environment"/>
+		<div id="gameMainCont">
+			<div id="hangedGameCont">
+				<img id="hangedImg" src="Hangman Game Over Img/ahorcado7.jpg"/>
+				
+				<div id="pointsCont" class="specialFixed">00000000</div>
+				<div id="timeCont" class="specialFixed"></div>
+				
+				<div id="gameMenu">
+					<button id="startGame" onclick="startGame()">Start</button>
+					<div id="selectedWord"></div>
+					<button id="addWord" onclick="addNewWord()">Add Word</button>
+					<input type="text" id="newWordTextBox"/>
+				</div>
+				
+				<div id="lettersCont"></div>
+				<div id="riskHintCont">
+					<div id="riskText" title="All-in option" onclick="riskWord()">Risk</div>
+					<input type="text" id="riskTextBox"/>
+					
+					<div id="hintOption" onclick="hintShow()">Hint (!)</div>
+					<p id="hintCont"></p>
+				</div>
+			</div>
+			
+			<div id="gameOver">
+				<h1 id="gameOverText">Game Over</h1>
+				<img id="gameOverSeiko" src="Hangman Game Over Img/tumblr_static_seiko_gif_2.gif">
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				createKeyboard();
+			});			
+		</script>
+	</body>
+</html>
