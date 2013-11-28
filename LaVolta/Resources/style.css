@@ -1,0 +1,162 @@
+body {
+	background-image: url('Images/fons_asfalt.jpg');
+}
+
+#firstMain {
+	margin-top:12%;
+}
+
+#laVoltaHeader {
+	width: 250px;
+	height: 250px;
+}
+
+#headerContainer {
+	padding:0;
+}
+
+#rightOptions button, #leftOptions button {
+	margin:5% 0;
+}
+
+#rightOptions {
+	margin: 25% 0;
+}
+
+#leftOptions {
+	margin: 13% 0;
+}
+
+.modalOption {
+	display:none;
+}
+
+button a {
+	color: white;
+	text-decoration:none;
+}
+
+button a:hover {
+	color: white;
+	text-decoration:none;
+}
+
+.genOptBtn {
+	margin-top:5%;
+}
+
+#voltaInfoCont {
+	
+}
+
+#textCont {
+	color:#A4A4A4;
+}
+
+#laVoltaTitle {
+	color:white;
+}
+
+#createTitle {
+	color:#E4E4E4;
+}
+
+#main {
+	background: url('Images/fons_ona.png') no-repeat;
+	min-height:600px;
+}
+
+#genericModalBody .modalOptionActive {
+	display:block;
+}
+
+.imageButtonHistory:hover {
+	cursor:pointer;
+}
+
+.imageButtonHistory {
+	width:35px;
+	height:35px;
+}
+
+.memberProgressCont {
+	width:95%;
+	margin-left:2%;
+	border-radius: 8px;
+	background-color:#ADADAD;
+}
+
+.memberImage {
+	height:35px;
+	width:35px;
+}
+
+#raceControl .teamCont {
+	padding-left:2.5%;
+}
+
+.racersCont {
+	padding: 0 2%;
+}
+
+.teamSettingsBtn {
+	width:35px;
+	height:30px;
+	margin-top:3%;
+}
+
+.memberName {
+	color:#fff;
+}
+
+.teamCont {
+	background:rgba(170, 170, 170, 0.2);
+	padding:2%;
+	border-radius:10px;
+}
+
+.memberProgress {
+	display:inline-block;
+	height:5px;
+	border-radius:10px;
+	background-color:red;
+}
+
+.teamTitle {
+	color:#E4E4E4;
+}
+
+.teamImage {
+	width:85px;
+	height:65px;
+	border-radius:7px;	
+}
+
+.teamSettingsBtn:hover {
+	cursor:pointer;
+}
+
+.teamSelectImage {
+	margin-top:10%;
+	width:120px;
+	height:100px;
+	border-radius:8px;
+}
+
+.teamSelectImage:hover {
+	cursor:pointer;
+}
+
+.teamImageDisabled {
+	opacity: 0.6;
+	filter:alpha(opacity=60);
+}
+
+#membAmount {
+	display:block;
+	margin-bottom:3%;
+	padding:1%;
+	width: 50px;
+	height: 30px;
+	border-radius:5px;
+}

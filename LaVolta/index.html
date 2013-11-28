@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>La Volta</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="Resources/style.css" />
+		<script type="text/javascript" src="Resources/jquery.js" ></script>
+		<script type="text/javascript" src="Resources/indexedDB.js" ></script>
+		<script type="text/javascript" src="Resources/scripts.js" ></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="Resources/css/bootstrap.css" rel="stylesheet">
+		<script type="text/javascript" src="Resources/js/bootstrap.js"></script>
+	</head>
+	
+	<body>
+		<div id="main" class="container tab-content">
+			<div id="firstMain" class="tab-pane fade in active">
+				<div class="row">
+					<div id="headerContainer" class="col-md-6 col-md-push-5">
+						<img id="laVoltaHeader" src="Resources/Images/LaVolta.png" title="La Volta" alt="LaVolta"/>
+					</div>
+					
+					<div id="menuContLeft" class="col-md-3 col-md-pull-6">
+						<div id="leftOptions">
+							<div class="row">
+								<div class="col-md-12">
+									<button id="startRaceBtn" class="btn btn-primary" data-toggle="modal" data-target="#genericNoCloseModalContainer" data-backdrop="false" data-keyboard="false"><a href="#gameCont">Start Race</a></button>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Load Race')">Load Race</button>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-danger" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Clean Indexed DB')">Clean Database</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="menuContRight" class="col-md-3 col-md-push-1">
+						<div id="rightOptions">
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-info" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Simulator Information')">Simulator Info</button>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-success" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Developer Team')">Developer Team</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div id="voltaInfoCont" class="col-md-12">
+						<h3 id="laVoltaTitle" class="text-center">2013 - Simulator: 93rd Edition of la Volta Ciclista a Catalunya</h3>
+						<div id="textCont">
+							<p class="text-center">This is a beta test version of the simulator of "la Volta Ciclista a Catalunya"</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="gameCont" class="tab-pane fade">
+				<div id="gameGeneralOptions" class="row">
+					<div class="col-md-6">
+						<button id="turnPassBtn" class="btn btn-default center-block genOptBtn" data-loading-text="Going on..." disabled>Turn Pass</button>
+					</div>
+					
+					<div class="col-md-6">
+						<button id="raceHistoryBtn" class="btn btn-default center-block genOptBtn" disabled data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Race History')">History</button>
+					</div>
+				</div>
+				
+				<!-- Fade in divs, start teamCreation, when it finishes will appear raceControl -->
+				<div id="teamCreation" class="tab-pane fade in active">
+					<div class="row">
+						<h2 id="createTitle" class="text-center">Select your team!</h2>
+					</div>
+				</div>
+				
+				
+				<div id="raceControl" class="tab-pane fade">
+					<div class="row">
+						<div id="teamsContainer" class="col-md-12">
+							
+							
+							
+							
+							<div class="row"> <!-- Team -->
+								<div class="col-md-12 teamCont">
+									<div class="row"> <!-- Team logo, name and setting (meters for each member) -->
+										<div class="col-md-1">
+											<img class="teamImage" src="Resources/Images/bmc.jpg" alt="team_image" />
+										</div>
+										<div class="col-md-4">
+											<h2 class="teamTitle">Team</h2>
+										</div>
+										<div class="col-md-7">
+											<img class="teamSettingsBtn" src="Resources/Images/settings-button.png" alt="teamSettings"/>
+										</div>
+									</div>
+									
+									<div class="racersCont"> <!-- Team members and progress -->
+										<div class="row">
+											<div class="col-md-12">
+												<div class="row"> <!-- Name and position -->
+													<div class="col-md-12">
+														<h4 class="memberName">Name,
+															<small>position</small>
+														</h4>
+													</div>
+												</div>
+												
+												<div class="row"> <!-- Progress and member history -->
+													<div class="col-md-11">
+														<!-- Progress marked by images and a background repeated patern? -->
+														<div class="memberProgressCont">
+															<div class="row">
+																<div class="col-md-12">
+																	<div class="memberProgress"></div>
+																	<img class="memberImage" src="Resources/Images/cyclistImg.png" alt="team_member"/>
+																</div>
+															</div>
+														</div>
+													</div>
+													
+													<div class="col-md-1">
+														<img class="imageButtonHistory center-block" src="Resources/Images/historyIcon.png" alt="member_history" data-toggle="modal" data-target="#genericModalContainer" onclick="showHistory('Name')" />
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+									
+								</div>
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+				
+				<div id="generalOptionsFooter" class="row">
+					<div class="col-md-6">
+						<button class="btn btn-success center-block genOptBtn">Save</button>
+					</div>
+					
+					<div class="col-md-6">
+						<button id="exitRaceBtn" class="btn btn-danger center-block genOptBtn"><a href="#firstMain">Exit</a></button>
+					</div>
+				</div>
+			</div>
+			
+			<div id="modalOptions">
+				<!-- Modal -->
+				<div class="modal fade" id="genericModalContainer" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				        <h4 class="modal-title" id="genericModalTitle"></h4>
+				      </div>
+				      <div id="genericModalBody" class="modal-body">
+
+							<div id="assignSpeed" class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="raceHistory" class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="createRace" class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="loadRace"class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="cleanIDB" class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="gameInfo" class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="developerTeamInfo" class="modalOption">
+								<div class="row">
+									
+								</div>
+							</div>
+							
+							<div id="teamSettings" class="modalOption">
+								
+							</div>
+							
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+				
+				
+				<!-- Modal that cannot be closed -->
+				<div class="modal fade" id="genericNoCloseModalContainer" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+				  <div class="modal-dialog">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h4 class="modal-title" id="genericNoCloseModalTitle"></h4>
+				      </div>
+				      <div id="genericNoCloseModalBody" class="modal-body">
+
+							<div id="membersAmount" class="">
+								<h3>How many members for team do you want?</h3>
+								
+								<select id="membAmount">
+									<script>
+										for (var i = 3; i < 9; i++)
+										{
+											document.write('<option value="'+ i +'">'+ i +'</option>');
+										}
+									</script>
+								</select>
+								
+								<button type="button" class="btn btn-default" data-dismiss="modal" onclick="setMembers()">Accept</button>
+							</div>
+							
+				      </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+			</div>
+		</div>
+	</body>
+</html>
