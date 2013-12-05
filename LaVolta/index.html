@@ -23,22 +23,24 @@
 					</div>
 					
 					<div id="menuContLeft" class="col-md-3 col-md-pull-6">
+						<a href="#raceControl"></a>
+						<a href="#teamCreation"></a>
 						<div id="leftOptions">
 							<div class="row">
 								<div class="col-md-12">
-									<button id="startRaceBtn" class="btn btn-primary" data-toggle="modal" data-target="#genericNoCloseModalContainer" data-backdrop="false" data-keyboard="false"><a href="#gameCont">Start Race</a></button>
+									<button id="startRaceBtn" class="btn btn-primary" data-toggle="modal" data-target="#genericNoCloseModalContainer" data-backdrop="false" data-keyboard="false" onclick="noCloseModalInfo('Create New Game');"><a href="#gameCont">Start Race</a></button>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-md-12">
-									<button class="btn btn-primary" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Load Race')">Load Race</button>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Load Race'); getAllData(true)">Load Race</button>
 								</div>
 							</div>
 							
 							<div class="row">
 								<div class="col-md-12">
-									<button class="btn btn-danger" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Clean Indexed DB')">Clean Database</button>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Delete Saved Data'); getAllData(false)">Delete Saved Data</button>
 								</div>
 							</div>
 						</div>
@@ -70,14 +72,14 @@
 				</div>
 			</div>
 			
-			<div id="gameCont" class="tab-pane fade">
+			<div id="gameCont" class="tab-pane fade tab-content">
 				<div id="gameGeneralOptions" class="row">
 					<div class="col-md-6">
-						<button id="turnPassBtn" class="btn btn-default center-block genOptBtn" data-loading-text="Going on..." disabled>Turn Pass</button>
+						<button id="turnPassBtn" class="btn btn-primary center-block genOptBtn" data-loading-text="Loading..." disabled="disabled" onclick="turnPass()">Turn Pass</button>
 					</div>
 					
 					<div class="col-md-6">
-						<button id="raceHistoryBtn" class="btn btn-default center-block genOptBtn" disabled data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Race History')">History</button>
+						<button id="raceHistoryBtn" class="btn btn-default center-block genOptBtn" disabled="disabled" data-toggle="modal" data-target="#genericModalContainer" onclick="modalInfo('Race History'); showRaceHistory()">History</button>
 					</div>
 				</div>
 				
@@ -92,74 +94,17 @@
 				<div id="raceControl" class="tab-pane fade">
 					<div class="row">
 						<div id="teamsContainer" class="col-md-12">
-							
-							
-							
-							
-							<div class="row"> <!-- Team -->
-								<div class="col-md-12 teamCont">
-									<div class="row"> <!-- Team logo, name and setting (meters for each member) -->
-										<div class="col-md-1">
-											<img class="teamImage" src="Resources/Images/bmc.jpg" alt="team_image" />
-										</div>
-										<div class="col-md-4">
-											<h2 class="teamTitle">Team</h2>
-										</div>
-										<div class="col-md-7">
-											<img class="teamSettingsBtn" src="Resources/Images/settings-button.png" alt="teamSettings"/>
-										</div>
-									</div>
-									
-									<div class="racersCont"> <!-- Team members and progress -->
-										<div class="row">
-											<div class="col-md-12">
-												<div class="row"> <!-- Name and position -->
-													<div class="col-md-12">
-														<h4 class="memberName">Name,
-															<small>position</small>
-														</h4>
-													</div>
-												</div>
-												
-												<div class="row"> <!-- Progress and member history -->
-													<div class="col-md-11">
-														<!-- Progress marked by images and a background repeated patern? -->
-														<div class="memberProgressCont">
-															<div class="row">
-																<div class="col-md-12">
-																	<div class="memberProgress"></div>
-																	<img class="memberImage" src="Resources/Images/cyclistImg.png" alt="team_member"/>
-																</div>
-															</div>
-														</div>
-													</div>
-													
-													<div class="col-md-1">
-														<img class="imageButtonHistory center-block" src="Resources/Images/historyIcon.png" alt="member_history" data-toggle="modal" data-target="#genericModalContainer" onclick="showHistory('Name')" />
-													</div>
-												</div>
-											</div>
-										</div>
-										
-									</div>
-									
-								</div>
-							</div>
-
-
-
-
 						</div>
 					</div>
 				</div>
 				
 				<div id="generalOptionsFooter" class="row">
 					<div class="col-md-6">
-						<button class="btn btn-success center-block genOptBtn">Save</button>
+						<button id="saveActualBtn" class="btn btn-success center-block genOptBtn">Save</button>
 					</div>
 					
 					<div class="col-md-6">
-						<button id="exitRaceBtn" class="btn btn-danger center-block genOptBtn"><a href="#firstMain">Exit</a></button>
+						<button id="exitRaceBtn" class="btn btn-danger center-block genOptBtn" onclick="gamePlayingOptions(false)"><a href="#firstMain">Exit</a></button>
 					</div>
 				</div>
 			</div>
@@ -174,52 +119,44 @@
 				        <h4 class="modal-title" id="genericModalTitle"></h4>
 				      </div>
 				      <div id="genericModalBody" class="modal-body">
-
-							<div id="assignSpeed" class="modalOption">
-								<div class="row">
-									
-								</div>
-							</div>
 							
 							<div id="raceHistory" class="modalOption">
-								<div class="row">
-									
-								</div>
+								
 							</div>
 							
-							<div id="createRace" class="modalOption">
-								<div class="row">
-									
-								</div>
+							<div id="memberHistory" class="modalOption">
+								
 							</div>
 							
 							<div id="loadRace"class="modalOption">
 								<div class="row">
-									
+									<div id="loadRaceList" class="col-md-12">
+										
+									</div>
 								</div>
 							</div>
 							
 							<div id="cleanIDB" class="modalOption">
 								<div class="row">
-									
+									<div id="loadDeleteRaceList" class="col-md-12">
+										
+									</div>
 								</div>
 							</div>
 							
 							<div id="gameInfo" class="modalOption">
 								<div class="row">
-									
+									<p class="text-center">This is a beta test version for "La VOlta" simulator. Here you'll find some of all the features thought for this little bycicle race game.</p>
 								</div>
 							</div>
 							
 							<div id="developerTeamInfo" class="modalOption">
 								<div class="row">
-									
+									<p class="text-center">This game has been developed by CEP's special Client Side Web Applications Development Team.</p>
 								</div>
 							</div>
 							
-							<div id="teamSettings" class="modalOption">
-								
-							</div>
+							
 							
 				      </div>
 				      <div class="modal-footer">
@@ -239,19 +176,55 @@
 				      </div>
 				      <div id="genericNoCloseModalBody" class="modal-body">
 
-							<div id="membersAmount" class="">
-								<h3>How many members for team do you want?</h3>
+							<div id="gameInit" class="modalOption">
+								<div id="gameNameSet">
+									<h4>Set a name for this game <small>(Min. 3 characters or a default name will be assigned)</small></h4>
+									<input type="text" id="gameNameText" class="form-control" placeholder="Game Name" />
+								</div>
 								
-								<select id="membAmount">
-									<script>
-										for (var i = 3; i < 9; i++)
-										{
-											document.write('<option value="'+ i +'">'+ i +'</option>');
-										}
-									</script>
-								</select>
+								<div id="membersAmount" class="">
+									<h3>How many members for team do you want?</h3>
+									
+									<select id="membAmount">
+										<script>
+											for (var i = 3; i < 9; i++)
+											{
+												document.write('<option value="'+ i +'">'+ i +'</option>');
+											}
+										</script>
+									</select>
+									
+									<button type="button" class="btn btn-default" data-dismiss="modal" onclick="createGame()">Accept</button>
+								</div>
+							</div>
+							
+							<div id="teamSettings" class="modalOption">
+								<div class="row">
+									<div class="col-md-12">
+										<h3 class="text-center">Meters per Turn for each team member:</h3>
+									</div>
+								</div>
 								
-								<button type="button" class="btn btn-default" data-dismiss="modal" onclick="setMembers()">Accept</button>
+								<div class="row">
+									<div class="col-md-12">
+										<p class="text-center">Available meters: <span id="mptValue">1000</span></p>
+									</div>
+								</div>
+								
+								<div class="row">
+									<!-- Container for all the members from which settings will be shown, separated to make an easier way to clean the "previous team" when charging a new one -->
+									<div id="membersSettingsCont" class="col-md-12">
+										
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-12">
+										<button type="button" class="btn btn-success" data-dismiss="modal" onclick="saveMeters(); teamModalClose(true)">Save Changes</button>
+										<div id="foodBagTooltip" data-toggle="tooltip" data-placement="top" title data-original-title="This feature is not available."><button type="button" class="btn btn-primary" disabled="disabled">Food Bag</button></div>
+										<button id ="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
 							</div>
 							
 				      </div>

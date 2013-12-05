@@ -9,9 +9,13 @@ Array Partida(gameName -> (name + date)) -> [team [runner [role] [maxMetersPerTu
 var idbSupported = false;
 var voltaDB;
 
-document.addEventListener("DOMContentLoaded", function(){
+$(document).ready(function(){
     if("indexedDB" in window) {
         idbSupported = true;
+    }
+    else
+    {
+    	alert("Your Web Broswe does not support IndexedDB, this can lead to errors and the disabling of the load/saving function");
     }
 },false);
 
@@ -19,14 +23,15 @@ document.addEventListener("DOMContentLoaded", function(){
 function openDB() {
 	if (idbSupported)
 	{
-		var openRequest = indexedDB.open("laVolta",1);
+		var openRequest = indexedDB.open("laVolta",2);
  
         openRequest.onupgradeneeded = function(e) {
             var actualDB = e.target.result;
             
             if(!actualDB.objectStoreNames.contains("laVolta"))
             {
-            	var store = actualDB.createObjectStore("laVolta", { keyPath: "gameName" });
+            	var store = actualDB.createObjectStore("laVolta", { keyPath: "gameDate" });
+            	store.createIndex("gameName", "gameName", { unique:true });
             }
         }
  
@@ -55,24 +60,89 @@ function dbAddInfo(data) {
 	var transaction = voltaDB.transaction(["laVolta"], "readwrite");
 	var store = transaction.objectStore("laVolta");
 	
-	//---- temporal add element -> using put to overwrite info, because add doesn't do it
 	var request = store.put(data);
 	
 	request.onerror = function(e) {
         console.log("Error",e.target.error.name);
-        //some type of error handler
+        
     }
  
     request.onsuccess = function(e) {
-        console.log("Information registed.");
+        
     }
 }
 
 
-
-
-function loadData(store) {
-	voltaDB.transaction("laVolta").objectStore(store).get(key/*the keypath that can be the name of the player or other things*/).onsuccess = function(event) {
-		console.log("Data loaded successfully");
+function saveToDb(data) {
+	var transaction = voltaDB.transaction(["laVolta"], "readwrite");
+	var store = transaction.objectStore("laVolta");
+	
+	var request = store.delete(data.gameDate);
+	
+	data.gameDate = new Date();
+	
+	request.onsuccess = function(event) {
+		dbAddInfo(data);
 	};
+}
+
+
+
+function loadRace(gameName) {
+	var req = voltaDB.transaction(["laVolta"]).objectStore("laVolta").index("gameName");
+	
+	req.get(gameName).onsuccess = function(event) {
+		var data = event.target.result;
+		resetTeams();
+		setRace(data);
+		document.getElementById('teamsContainer').innerHTML = '';
+		gamePlayingOptions(true);
+		setMembersAmount(data.gameMembers);
+		
+		for(var i in data.gameTeams)
+		{
+			createTeamElements(data.gameTeams[i], true);
+		}
+		
+		// Players is actual max amount of players, in a future this value should be a variable from the race (gamePlayers)
+		setPlayers(2);
+		teamModalClose(true);
+		
+		$('#startRaceBtn a[href="#gameCont"]').tab('show');
+		$('#menuContLeft a[href="#raceControl"]').tab('show');	
+	};
+}
+
+function getAllData(load) {
+	var transaction = voltaDB.transaction(["laVolta"], "readwrite");
+	var store = transaction.objectStore("laVolta");
+	var races = [];
+
+	store.openCursor().onsuccess = function(event) {
+	  var cursor = event.target.result;
+	  if (cursor) {
+	    races.push(cursor.value);
+	    cursor.continue();
+	  }
+	  else {
+	    racesToLoad(races, load);
+	  }
+	};
+}
+
+
+function deleteRace(gameName) {
+	var req = voltaDB.transaction(["laVolta"]).objectStore("laVolta").index("gameName");
+	
+	req.get(gameName).onsuccess = function(event) {
+		var data = event.target.result;
+		
+		var req = voltaDB.transaction(["laVolta"], "readwrite").objectStore("laVolta").delete(data.gameDate);
+	
+		req.onsuccess = function(event) {
+			getAllData(false);
+		};
+	};
+	
+	
 }

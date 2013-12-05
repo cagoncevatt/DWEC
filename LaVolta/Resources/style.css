@@ -2,6 +2,10 @@ body {
 	background-image: url('Images/fons_asfalt.jpg');
 }
 
+#genericModalBody {
+	padding-bottom:5px;
+}
+
 #firstMain {
 	margin-top:12%;
 }
@@ -95,6 +99,10 @@ button a:hover {
 	padding-left:2.5%;
 }
 
+#raceControl {
+	margin: 1.5% 0;
+}
+
 .racersCont {
 	padding: 0 2%;
 }
@@ -115,9 +123,18 @@ button a:hover {
 	border-radius:10px;
 }
 
+#closeBtn {
+	display:none;
+}
+
+#foodBagTooltip {
+	display:inline-block;
+}
+
 .memberProgress {
 	display:inline-block;
 	height:5px;
+	width:0%;
 	border-radius:10px;
 	background-color:red;
 }
@@ -159,4 +176,37 @@ button a:hover {
 	width: 50px;
 	height: 30px;
 	border-radius:5px;
+}
+
+#generalOptionsFooter .genOptBtn {
+	margin-bottom:2%;
+	margin-top:0;
+}
+
+#teamCreation {
+	margin-bottom:4%;
+}
+
+.teamCont {
+	margin-bottom:2%;
+}
+
+.memberMetersCont {
+	margin: 0 2%;
+	padding: 0 3%;
+	border-radius:5px;
+	border: 1px solid #4E4E4E;
+}
+
+.metersArrow:hover {
+	pointer:cursor;
+}
+
+#membersSettingsCont {
+	margin-top:5%;
+	margin-bottom:4%;
+}
+
+.raceListItem:hover {
+	cursor:pointer;
 }
