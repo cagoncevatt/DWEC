@@ -1,0 +1,145 @@
+#gameTable {
+	margin:15px;
+	background-color:#e4e4e4;
+	border: 15px groove #4e4e4e;
+	float:left;
+	display:block;
+}
+
+body {
+	background-color:#b2ccb2;
+}
+
+#settings {
+	font-size:large;
+	width:120px;
+	height:40px;
+	margin-left:44%;
+	margin-bottom:15px;
+	background-color:#ffff77;
+}
+
+#mainOptCont {
+	background-color:#eeeeee;
+	width:49%;
+	height:180px;
+	margin-left:23%;
+	border:1px solid black;
+	border-radius:15px;
+	padding:25px;
+	margin-bottom:20px;
+	overflow:auto;
+}
+
+#rulesToggle {
+	clear:both;
+	display:block;
+	width:70px;
+	height:30px;
+	background-color:#ff4400;
+	border-radius:8px;
+	font-weight:bold;
+	margin-left:46%;
+}
+
+#rulesDisplay {
+	background-color:#eeeeee;
+	width:83%;
+	margin-left:5%;
+	border:1px solid black;
+	border-radius:15px;
+	padding:25px;
+	margin-top:10px;
+}
+
+#rulesDisplay p {
+	text-align:center;
+	font-size:1.2em;
+}
+
+#radioGroup {
+	margin-bottom:20px;
+}
+
+#pieceOpt {
+	margin-bottom:40px;
+}
+
+#choices {
+	margin-bottom: 10px;
+	margin-left:35%;
+}
+
+#startGame, #modifGame {
+	margin-left: 20px;
+	height:35px;
+	width:150px;
+}
+
+#gameTitle {
+	margin-bottom:0;
+}
+
+#gameOpt {
+	float:left;
+	width:400px;
+}
+
+#pieceOpt {
+	float:left; 	
+	width: 250px;
+}
+
+.gridBox {
+	float:left;
+	border:1px solid black;
+	width:50px;
+	height:50px;
+}
+
+.dimensionDefine, .pieceDefine {
+	width:75px;
+	margin-left:3%;
+}
+
+.selectable {
+	background-color:yellow;
+}
+
+.selectableHover {
+	background-color:green;
+}
+
+.angryPiece:hover {
+	cursor:move;
+}
+
+.piece, .pieceState {
+	width:50px;
+	height:50px;
+	background-size:contain;
+}
+
+.deathPiece {
+	display:none;
+}
+
+.redPiece, .APiece {
+	background-image: url('./Images/redPiece.png');
+}
+
+.greenPiece, .BPiece {
+	background-image: url('./Images/greenPiece.png');
+}
+
+.APiece:hover, .BPiece:hover {
+	cursor:move;
+}
+
+.angryPiece {
+	background-image: url('./Images/angry.png');
+}
+
+.happyPiece {
+	background-image: url('./Images/happy.png');
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<script type="text/javascript" src="./jquery.js"></script>
+		<script type="text/javascript" src="./jquery-ui.js"></script>
+		<script type="text/javascript" src="./Auxiliar.js"></script>
+		<script type="text/javascript" src="./Piece.js"></script>
+		<script type="text/javascript" src="./Grid.js"></script>
+		<script type="text/javascript" src="./Table.js"></script>
+		<script type="text/javascript" src="./Rules.js"></script>
+		<script type="text/javascript" src="./Game.js"></script>
+		<script type="text/javascript" src="./script.js"></script>
+		<title>DWEC - Activitat 2.2: Els petits canvis són poderosos</title>
+		<meta charset="UTF-8">
+	</head>
+	
+	<body>
+		<h1 style="text-align: center;">Dr. Schelling exercises + Predators Extra!</h1>
+		<button id="settings">Settings</button>
+		<div id="mainOptCont">
+			<div id="gameOpt">
+				<span>How many columns... ?</span><input type="number" id="gameTableX" class="dimensionDefine" placeholder="How many columns... ?" min="3" max="24" value="3" /><br>
+				<span>How many rows... ?</span><input type="number" id="gameTableY" class="dimensionDefine" placeholder="How many rows... ?" min="3" max="100" value="3" /><br>
+				<h3 id="gameTitle">Games:</h3>
+				<form id="radioGroup">
+					<input type="radio" id="type0" name="gameType" value="0" checked onclick="activeOptions()" />Happy with equals<br>
+					<input type="radio" id="type1" name="gameType" value="1" onclick="activeOptions()" />Happy with others<br>
+					<input type="radio" id="type2" name="gameType" value="2" onclick="activeOptions()" />Thrill of the hunt<br>
+				</form>
+			</div>
+			<div id="pieceOpt">
+				<span>How many A pieces... ?</span><input type="number" id="gamePieceA" class="pieceDefine" placeholder="How many A pieces... ?" min="2" max="100" value="2" /><br>
+				<span>How many B pieces... ?</span><input type="number" id="gamePieceB" class="pieceDefine" placeholder="How many B pieces... ?" min="2" max="100" value="2" /><br>
+				<span>How many neighbors... ?</span><input type="number" id="gamePieceC" class="pieceDefine" placeholder="How many neighbors... ?" min="1" max="8" value="1" /><br>
+			</div>
+		</div>
+		<div id="choices">
+			<input id="startGame" type="button" value="Let's Play!" onclick="validGame()" />
+			<input id="modifGame" type="button" value="Change the Rules!" onclick="modifyParameters()" />
+		</div>
+		<div id="gameTable">
+		</div>
+		<button id="rulesToggle">Rules</button>
+		<div id="rulesDisplay">
+			<p id="rulesSegregation">On the board above, drag each "unhappy" token (marked with an angry face) to an open square where its preference for same-colored neighbors will be satisfied. Neighbors are tokens in adjacent squares, including diagonals.</p>
+			<p id="rulesAcceptation">To find out what happens when segregated green and red tokens prefer to have a neighbor from the other group, drag each "unhappy" token to an open square next to a different-colored neighbor.</p>
+			<p id="rulesThrillOfTheHunt">Leaving aside segregation and acceptation of different people, now we'll focus on "animal instinct", in this case in the predators instincts that rules over the jungle, to eat or be eaten. We have two separated groups which have to survive to the other, the first that eats all of the enemies is the winner. To eat an enemy you need to have more "neighbor" pieces of your group around the prey, else it won't be a valid target. This is a game of 2 players and with a requirement of at least 5 rows in the table.</p>
+		</div>
+	</body>
+</html>
